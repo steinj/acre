@@ -51,25 +51,27 @@ ACRE is to be used in place of the compiler used in the build system for C/C++ p
 
   Command Line Option                 | Description
   ------------------------------------|-------------------------------------------
-  -acre:config_file <filename>        | File to use as the config file (Default: ${HOME}/.acre/config)
-  -acre:output_file <filename>        | File to output coding standard files (Default: cout)
-  -acre:early_exit_threshold <value>  | Threshold for number of statements that must be reached for an if-stmt to be a candidate for early exit (Default: 20)
+  `-acre:config_file <filename>`        | File to use as the config file (Default: ${HOME}/.acre/config)
+  `-acre:output_file <filename>`        | File to output coding standard files (Default: cout)
+  `-acre:early_exit_threshold <value>`  | Threshold for number of statements that must be reached for an if-stmt to be a candidate for early exit (Default: 20)
 
 Configuration File:
   Notes
     Format: libconfig (www.hyperrealm.com/libconfig/)
 
   Settings (i.e. what can be defined in the file)
+```
     early_exit_threshold = <value>;    // same as early_exit_threshold defined above
-    output_file = "<path-to-file>";  // string, must include quotes
+    output_file = "<path-to-file>";    // string, must include quotes
     ignore = [ "<path-to-file>", "<directory>", ... ];  // list of files and/or directories to be ingored (defined as strings)
                                                         // directories must end with a "/"
+```
 
 Interactions between CLI and Configuration File:
-  Order of application
-    1. Configuration File
-    2. CLI Options
-         * Any option provided as a CLI option overrides the value defined in the configuration file
+* Order of application
+  1. Configuration File
+  2. CLI Options
+    * Any option provided as a CLI option overrides the value defined in the configuration file
 
 
 Output
@@ -79,8 +81,9 @@ ACRE outputs the code standard violation in addition to the file and line number
 Additional information is included within square brackets, i.e. comments within [].
 The violations are output in the following format:
 
+```
 <violation description>: <filename> @ <line number> [additional info]
-
+```
 
 Pragmas (used within source code)
 -------------------------------
